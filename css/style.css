@@ -61,11 +61,7 @@ footer{
     color: whitesmoke;
 }
 
-textarea{
-    width: 50%;
-    min-height: 25%;
-}
-input[type=text], input[type=email], input[type=textarea]{
+input[type=textarea]{
     width: 50%;
 }
 
@@ -89,3 +85,49 @@ input[type=text], input[type=email], input[type=textarea]{
     font-size: xx-small;
     font-weight: lighter;
 }
+
+.headercontainer{
+    display: inline-flex;
+}
+.leftheader{
+    flex: auto;
+    width:75%
+}
+
+.rightheader{
+    width: 300px;
+    position: fixed;
+    border: 1px;
+    z-index: 10;
+    top: -5px;
+    right: 150px;
+    display: inline-block;
+}
+
+.navLinkRight{
+    float: right;
+}
+
+.navBtn{
+    align-self:inherit;
+    margin-left: 90%;
+}
+
+#darkmodebutton{
+    position: fixed;
+    margin-left: 90%;
+}
+
+.formlabel{
+    display: inline-block;
+    width: 15%;
+    text-align: right;
+}
+
+.formelem{
+    width: 25%;
+    align-self:;
+    align-items: center;
+    margin-left: 2.5%;
+}
+
