@@ -3,10 +3,10 @@
 <html>
     <head>
         <title>Home | FenixTek</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <?php include "headcomp.php" ?>
     </head>
     
-    <body>
+    <body onload="SelectMode()">
         <?php include "header.php"?>
         <?php include "checkmessage.php"?>
         <?php include "footer.php" ?>

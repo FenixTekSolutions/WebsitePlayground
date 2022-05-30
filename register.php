@@ -124,29 +124,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
-</head>
-<body>
+    <?php include "headcomp.php" ?>
+    </head>
+    
+    <body onload="SelectMode()">
+    <?php include "header.php"?>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>Username</label>
+                <label>Username</label><br>
                 <input type="text" name="username" class="form-control <?php echo (!empty($usernameError)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $usernameError; ?></span>
             </div>    
             <div class="form-group">
-                <label>Password</label>
+                <label>Password</label><br>
                 <input type="password" name="password" class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $passwordError; ?></span>
             </div>
             <div class="form-group">
-                <label>Confirm Password</label>
+                <label>Confirm Password</label><br>
                 <input type="password" name="confirmpassword" class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
                 <span class="invalid-feedback"><?php echo $confirmPasswordError; ?></span>
             </div>
@@ -156,6 +154,7 @@
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
-    </div>    
+    </div>   
+    <?php include "footer.php"?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
     echo "<header>
 
-            <h1><img src=\"img/FT_New.png\" width=\"64\">FenixTek</h1>
+            <h1><img src=\"img/logos/FT_New.png\" width=\"64\">FenixTek</h1>
                 
             <nav id=\"navMain\">
 

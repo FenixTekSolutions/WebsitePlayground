@@ -3,11 +3,10 @@
 <html>
     <head>
         <title>Home | FenixTek</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <?php include "headcomp.php" ?>
     </head>
     
-    <body>
+    <body onload="SelectMode()">
     <?php include ("header.php")?>
     
     <div id="mainContent">

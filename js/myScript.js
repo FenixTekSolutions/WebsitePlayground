@@ -3,13 +3,7 @@ function Loaded(){
     //alert("Welcome");
 }
 
-var darkmode = false;
 
-function ToggleDarkMode()
-{
-    darkmode = !darkmode;
-    console.log(darkmode);
-}
 
 function InvalidCredentials()
 {
@@ -22,4 +16,4 @@ function test(){
 // var btnDM;
 
 // onload (btnDM = document.getElementById("darkmodebutton"));
-// btnDM.addEventListener("click", ToggleDarkMode, false);
+// btnDM.addEventListener("click", ToggleDarkMode, false)

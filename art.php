@@ -3,12 +3,19 @@
 <html>
     <head>
         <title>Links - FenixTek</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <?php include "headcomp.php" ?>
+        <script type="text/javascript" src="js/imgCarousel.js"></script>
     </head>
     
-    <body>
+    <body onload="SelectMode()">    
         <?php include "header.php"?>
+
+        <div class="container_imageSlider">
+            <button id="btnPrev" onclick="Prev()">Prev</button>
+            <img id="carousel" src="img/gallery/3D/Barrell.png" width="50%"/>
+            <button id="btnNext" onclick="Next()">Next</button>
+        </div>
+
         <?php include "footer.php" ?>
     </body>
 </html>

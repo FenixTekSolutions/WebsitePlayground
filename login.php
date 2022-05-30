@@ -111,11 +111,10 @@
 <html>
     <head>
         <title>Log In | FenixTek</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <?php include "headcomp.php" ?>
     </head>
     
-    <body>
+    <body onload="SelectMode()">
         <?php include ("header.php")?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
