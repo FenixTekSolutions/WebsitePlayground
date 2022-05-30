@@ -24,7 +24,7 @@ nav, .navLink{
 body{
     background: lightblue;
     font-family: 'Anton', sans-serif;
-    color: whitesmoke;
+    color: black;
 }
 
 article{
@@ -34,6 +34,10 @@ article{
     background-color: orange;
     color: whitesmoke;
     
+}
+
+p{
+    color:black;
 }
 
 .artHeading{
@@ -141,8 +145,7 @@ input[type=textarea]{
     vertical-align: auto;
 }
 
-.container_imageSlider{
-    align-items: center;
-    vertical-align: center;
+container_images{
+    align-content: center;
+    align-self: center;
 }
-

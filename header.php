@@ -1,6 +1,6 @@
 <?php
     echo "<header>
-
+            <button id=\"darkmodebutton\" onclick=\"ToggleDarkMode()\">Toggle Dark Mode</button>
             <h1><img src=\"img/logos/FT_New.png\" width=\"64\">FenixTek</h1>
                 
             <nav id=\"navMain\">

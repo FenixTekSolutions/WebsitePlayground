@@ -1,3 +1,8 @@
+<?php
+    require_once "checklogin.php";
+?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -10,7 +15,7 @@
     <body onload="SelectMode()">    
         <?php include "header.php"?>
 
-        <div class="container_imageSlider">
+        <div class="container_images">
             <button id="btnPrev" onclick="Prev()">Prev</button>
             <img id="carousel" src="img/gallery/3D/Barrell.png" width="50%"/>
             <button id="btnNext" onclick="Next()">Next</button>

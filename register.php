@@ -3,8 +3,9 @@
     require_once "config.php";
 
     // Initialise empty vars
-    $username = $password = $confirmPassword = "";
-    $usernameError = $passwordError = $confirmPasswordError = "";
+    $username = $email = $password = $confirmPassword = "";
+    $usernameError = $emailError = $passwordError = $confirmPasswordError = "";
+    $genError = "Something, somwhere, went terribly wrong... Please try again later.";
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -46,7 +47,7 @@
                 }
                 else
                 {
-                    echo "Something, somwhere, went terribly wrong... Please try again later.";
+                    echo $genError;
                 }
 
                 // close the statement
@@ -54,6 +55,46 @@
             }
 
         }
+
+        // Validate Email
+        if(empty(trim($_POST["email"])))
+        {
+            $emailError = "Please enter a valid Email address.";
+        }
+        else
+        {
+            $sql = "SELECT id FROM users WHERE email = ?";
+
+            if($stmt = mysqli_prepare($link, $sql))
+            {   
+                // Link params
+                mysqli_stmt_bind_param($stmt, "s", $param_email);
+
+                //Set Params
+                $param_email = trim($_POST["email"]);
+
+                if(mysqli_execute($stmt))
+                {
+                    mysqli_stmt_store_result($stmt);
+
+                    if(mysqli_stmt_num_rows($stmt) == 1)
+                    {
+                        $emailError = "You already appear to have an account.";
+                    }
+                    else
+                    {
+                        $email = trim($_POST["email"]);
+                    }
+                }
+                else
+                {
+                    echo $genError;
+                }
+
+                mysqli_stmt_close($stmt);
+            }
+        }
+
 
         // Validate password
         if(empty(trim($_POST["password"])))
@@ -85,20 +126,22 @@
         }
 
         // Double Check for errors
-        if(empty($usernameError) && empty($passwordError) && empty($confirmPasswordError))
+        if(empty($usernameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError))
         {
             // prep for insertion (heh... giggity!)
-            $sql = "INSERT INTO users (username, password) VALUES (?, ?)"; 
+            $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)"; 
 
             if($stmt = mysqli_prepare($link, $sql))
             {
                 // Bind vars
-                mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+                mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
 
                 // Set params
                 $param_username = $username;
                     // hash pwd
                 $param_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $param_email = $email;
 
                 // Attempt to run statement
                 if(mysqli_stmt_execute($stmt))
@@ -108,7 +151,7 @@
                 }
                 else
                 {
-                    echo "Something, somwhere, went terribly wrong... Please try again later.";
+                    echo $genError;
                 }
 
                 mysqli_stmt_close($stmt);
@@ -137,7 +180,12 @@
                 <label>Username</label><br>
                 <input type="text" name="username" class="form-control <?php echo (!empty($usernameError)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $usernameError; ?></span>
-            </div>    
+            </div>
+            <div class="form-group">
+                <label>Email</label><br>
+                <input type="email" name="email" class="form-control <?php echo (!empty($emailError)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                <span class="invalid-feedback"><?php echo $emailError; ?></span>
+            </div>
             <div class="form-group">
                 <label>Password</label><br>
                 <input type="password" name="password" class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">

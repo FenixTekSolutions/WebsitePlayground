@@ -1,3 +1,7 @@
+<?php
+    require_once "checklogin.php";
+?>
+
 <!DOCTYPE HTML>
 
 <html>
