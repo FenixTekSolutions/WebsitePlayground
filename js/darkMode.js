@@ -1,22 +1,31 @@
-var darkmode = localStorage.getItem("dark");
-if(darkmode == undefined)
-{
-    darkmode = false;
+var darkmode;
 
+if(window.localStorage.getItem("dark") != null)
+{
+    darkmode = window.localStorage.getItem("dark");
 }
+else{
+    darkmode = false;
+}
+
+window.localStorage.setItem("dark", darkmode);
+console.log(localStorage.getItem("dark"));
+
 function ToggleDarkMode()
 {
     darkmode = !darkmode;
-    localStorage.setItem("dark", darkmode);
+    window.localStorage.setItem("dark", darkmode);
     console.log(darkmode);
-
-    var style = document.getElementById("stylesht");
-    style.href = darkmode ? "css/dark.css" : "css/light.css";
+    SelectMode();
 }
 
 function SelectMode(){
     var style = document.getElementById("stylesht");
-    darkmode = localStorage.getItem("dark");
+    darkmode = JSON.parse(window.localStorage.getItem("dark"));
+
     style.href = darkmode ? "css/dark.css" : "css/light.css";
+
     console.log("SelectMode triggered - Darkmode = " + darkmode);
+    console.log("localStorage('dark') = " + window.localStorage.getItem("dark"));
+    console.log(style.href);
 }
