@@ -42,15 +42,21 @@ question5.wrong1 =  "Order of the Phoenix";
 question5.wrong2 = "Prisoner of Azkaban";
 question5.wrong3 = "Chamber of Secrets";
 
-qs.push(question1);
-qs.push(question2);
-qs.push(question3);
-qs.push(question4);
-qs.push(question5);
-
-playing = true;
+if(qs.length < 5)
+{
+    qs.push(question1);
+    qs.push(question2);
+    qs.push(question3);
+    qs.push(question4);
+    qs.push(question5);
 }
 
+var btnStart = document.getElementById("bStart");
+console.log(score);
+btnStart.onclick="";
+playing = true;
+outputQuestion();
+}
 
 function outputQuestion()
 {
@@ -84,9 +90,16 @@ function outputQuestion()
 }   
 
 function answer(given){
-    console.log(given);
-    answers.push(given);
-    outputQuestion();
+    if(playing)
+    {
+        console.log(given);
+        answers.push(given);
+        outputQuestion();
+    }
+    else
+    {
+        Start();
+    }
 }
 
 function calcScore(){
@@ -109,10 +122,14 @@ function endQuiz()
     var btn2 = document.getElementById("b2");
     var btn3 = document.getElementById("b3");
     var btn4 = document.getElementById("b4");
-    btn4.innerHTML = "";
     btn1.innerHTML = "";
     btn2.innerHTML = "";
     btn3.innerHTML = "";
+    btn4.innerHTML = "";
+    btn1.onclick ="";
+    btn2.onclick="";
+    btn3.onclick="";
+    btn4.onclick="";
 
     score = 0;
     current = 0;

@@ -14,7 +14,7 @@
     <body onload="SelectMode()">
         <?php include "header.php"?>
         <div>
-            <Button onclick="outputQuestion()">Start</Button>
+            <Button id="bStart" onclick="Start()">Start</Button>
             <h2 id="question"></h2>
             <button id="b1" onclick="answer(0)"></button>
             <button id="b2" onclick="answer(1)"></button>
