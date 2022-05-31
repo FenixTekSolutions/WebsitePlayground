@@ -11,7 +11,7 @@
     </head>
     
     <body onload="SelectMode()">
-    <?php include ("header.php")?>
+    <?php include "header.php"?>
     
     <div id="mainContent">
         <br>

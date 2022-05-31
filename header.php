@@ -10,7 +10,9 @@
                 <a class=\"navLink\" href=\"cv.php\">CV</a> | 
                 <a class=\"navLink\" href=\"code.php\">CODE SAMPLES</a> | 
                 <a class=\"navLink\" href=\"art.php\">ART</a> | 
-                <a class=\"navLink\" href=\"contact.php\">CONTACT</a>
+                <a class=\"navLink\" href=\"contact.php\">CONTACT</a> |
+                <a class=\"navLink\" href=\"quiz.php\">Quiz</a> |
+                <a class=\"navLink\" href=\"account.php\">ACCOUNT</a>
                 <td><button class=\"navBtn\" onclick=\"location.href='login.php';\">Log In</button></td>
                 <td><button class=\"navBtn\" onclick=\"location.href='register.php';\">Sign Up</button></td>
 

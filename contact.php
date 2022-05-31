@@ -7,7 +7,7 @@
     </head>
     
     <body onload="SelectMode()">
-        <?php include ("header.php")?>
+        <?php include "header.php"?>
 
         <form action="thanks.php" method="post">
             <input type="text" placeholder="Your name here..."><br>

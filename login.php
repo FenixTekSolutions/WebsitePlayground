@@ -13,7 +13,7 @@
     require_once "config.php";
 
     // Define & init vars
-    $username = $password = "";
+    $username = $password = $email = "";
     $username_error = $password_error = "";
 
     // Collect submitted data and validate
@@ -44,7 +44,7 @@
         if(empty($username_error) && empty($password_error))
         {
             //Prep the select statement
-            $sql = "SELECT id, username, password FROM users WHERE username = ?";
+            $sql = "SELECT id, username, password, email FROM users WHERE username = ?";
 
             if($stmt = mysqli_prepare($link, $sql))
             {
@@ -64,7 +64,7 @@
                     if(mysqli_stmt_num_rows($stmt) == 1)
                     {
                         // Bind result vars
-                        mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                        mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $email);
 
                         if(mysqli_stmt_fetch($stmt))
                         {
@@ -76,6 +76,7 @@
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
+                                $_SESSION["email"] = $email;
 
                                 header("location: welcome.php");
                             }
