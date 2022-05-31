@@ -1,4 +1,12 @@
-// Questions
+var playing = false;
+var current = 0;
+var qs = [];
+var answers = [];
+var score = 0;
+
+
+function Start(){
+question1 = new Object();
 question1.question = "Complete this well known phrase: 'Use the _________'";
 question1.correct = "Force!";
 question1.wrong1 = "Forks!";
@@ -34,19 +42,15 @@ question5.wrong1 =  "Order of the Phoenix";
 question5.wrong2 = "Prisoner of Azkaban";
 question5.wrong3 = "Chamber of Secrets";
 
-//Functionality
-var playing = false;
-var current = 0;
-var answers = [];
-var score = 0;
-
-
-var qs = {};
 qs.push(question1);
 qs.push(question2);
 qs.push(question3);
 qs.push(question4);
 qs.push(question5);
+
+playing = true;
+}
+
 
 function outputQuestion()
 {
@@ -67,16 +71,15 @@ function outputQuestion()
             var btn4 = document.getElementById("b4");
             
             qHeading.innerHTML = cQuestion.question;
-            ssss
             btn1.innerHTML = cQuestion.wrong1;
-            btn2.innerHTML = cQuestion.correct;s
+            btn2.innerHTML = cQuestion.correct;
             btn3.innerHTML = cQuestion.wrong2;
             btn4.innerHTML = cQuestion.wrong3;
             current++;
         }
     }
     else{
-        playing = true;
+        Start();
     }  
 }   
 
