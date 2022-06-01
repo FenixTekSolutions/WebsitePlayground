@@ -3,8 +3,8 @@
     require_once "config.php";
 
     // Initialise empty vars
-    $username = $email = $password = $confirmPassword = "";
-    $usernameError = $emailError = $passwordError = $confirmPasswordError = "";
+    $username = $email = $dob = $password = $confirmPassword = "";
+    $usernameError = $emailError = $dobError = $passwordError = $confirmPasswordError = "";
     $genError = "Something, somwhere, went terribly wrong... Please try again later.";
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -95,6 +95,14 @@
             }
         }
 
+        if(empty($_POST["dob"]))
+        {
+            $dobError = "Please enter your date of birth.";
+        }
+        else
+        {
+            $dob = $_POST["dob"];
+        }
 
         // Validate password
         if(empty(trim($_POST["password"])))
@@ -129,12 +137,12 @@
         if(empty($usernameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError))
         {
             // prep for insertion (heh... giggity!)
-            $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)"; 
+            $sql = "INSERT INTO users (username, dob, password, email) VALUES (?, ?, ?, ?)"; 
 
             if($stmt = mysqli_prepare($link, $sql))
             {
                 // Bind vars
-                mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
+                mysqli_stmt_bind_param($stmt, "ssss", $param_username, $dob, $param_password, $param_email);
 
                 // Set params
                 $param_username = $username;
@@ -187,6 +195,11 @@
                 <span class="invalid-feedback"><?php echo $emailError; ?></span>
             </div>
             <div class="form-group">
+                <label>Date of Birth</label><br>
+                <input type="date" name="dob" class="form-control <?php echo (!empty($dobError)) ? 'is-invalid' : ''; ?>" value="<?php echo $dob; ?>">
+                <span class="invalid-feedback"><?php echo $dobError; ?></span>
+            </div>
+            <div class="form-group">
                 <label>Password</label><br>
                 <input type="password" name="password" class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $passwordError; ?></span>
@@ -195,6 +208,10 @@
                 <label>Confirm Password</label><br>
                 <input type="password" name="confirmpassword" class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmPassword; ?>">
                 <span class="invalid-feedback"><?php echo $confirmPasswordError; ?></span>
+            </div>
+            <div class="form-group">
+                <label>Receive non-essential communication.</label>
+                <input type="checkbox" name="mailto" class="form-control">
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
