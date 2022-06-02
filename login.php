@@ -127,7 +127,7 @@
             <input name="password" type="password" required="true" placeholder="Password"><br>
             <span><?php echo $password_error; ?></span>
             <input type="submit" value="Log in"/>
-            <p>Not already signed up? <a href="signup.php">Sign Up</a>.</P>
+            <p>Not already signed up? <a href="register.php">Sign Up</a>.</P>
         </form>
 
         <?php include "footer.php" ?>

@@ -41,7 +41,11 @@
                 </dl>
             </div>
             <div class="section-account">
-                <h3>Some other heading</h3>
+                <h3>Account Management</h3>
+                <a href="changeusername.php">Change Username</a><br>
+                <a href="changeemail.php">Change Email</a><br>
+                <a href="changepassword.php">Change Password</a><br>
+                <a href="deleteaccount.php">"Delete Account </a>
             </div>
         </div>
         <?php include "footer.php"?>

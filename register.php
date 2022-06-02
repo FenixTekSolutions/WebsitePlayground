@@ -3,7 +3,7 @@
     require_once "config.php";
 
     // Initialise empty vars
-    $username = $email = $dob = $password = $confirmPassword = "";
+    $username = $email = $dob = $password = $confirmPassword = $mailto = "";
     $usernameError = $emailError = $dobError = $passwordError = $confirmPasswordError = "";
     $genError = "Something, somwhere, went terribly wrong... Please try again later.";
 
@@ -132,17 +132,19 @@
                 $confirmPasswordError = "Passwords do not match.";
             }
         }
+        
+        $mailto = isset($_POST["mailto"]) ? 1 : 0;
 
         // Double Check for errors
-        if(empty($usernameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError))
+        if(empty($usernameError) && empty($emailError) && empty($dobError) && empty($passwordError) && empty($confirmPasswordError) && $mailto < 2 && $mailto > -1)
         {
             // prep for insertion (heh... giggity!)
-            $sql = "INSERT INTO users (username, dob, password, email) VALUES (?, ?, ?, ?)"; 
+            $sql = "INSERT INTO users (username, dob, password, email, mailto) VALUES (?, ?, ?, ?, ?)"; 
 
             if($stmt = mysqli_prepare($link, $sql))
             {
                 // Bind vars
-                mysqli_stmt_bind_param($stmt, "ssss", $param_username, $dob, $param_password, $param_email);
+                mysqli_stmt_bind_param($stmt, "ssssi", $param_username, $param_dob, $param_password, $param_email, $param_mailto);
 
                 // Set params
                 $param_username = $username;
@@ -150,6 +152,10 @@
                 $param_password = password_hash($password, PASSWORD_DEFAULT);
 
                 $param_email = $email;
+
+                $param_dob = $dob;
+
+                $param_mailto = $mailto;
 
                 // Attempt to run statement
                 if(mysqli_stmt_execute($stmt))
