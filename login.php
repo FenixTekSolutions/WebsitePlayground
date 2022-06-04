@@ -76,8 +76,6 @@
                                 $_SESSION["loggedin"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
-                                $_SESSION["email"] = $email;
-
                                 header("location: welcome.php");
                             }
                             else

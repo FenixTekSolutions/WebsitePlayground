@@ -45,7 +45,7 @@
                 <a href="changeusername.php">Change Username</a><br>
                 <a href="changeemail.php">Change Email</a><br>
                 <a href="changepassword.php">Change Password</a><br>
-                <a href="deleteaccount.php">"Delete Account </a>
+                <a href="deleteaccount.php">Delete Account </a>
             </div>
         </div>
         <?php include "footer.php"?>
