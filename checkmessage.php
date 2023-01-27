@@ -2,7 +2,7 @@
         <?php
             if($_POST['message'])
             {
-                //mail("morelethalshadow12@gmail.com", "Test!", $_POST['message']."/nFrom:".$_POST['email']);
+                //mail("fenixteksolutions@gmail.com", "Test!", $_POST['message']."/nFrom:".$_POST['email']);
                 echo "<p>Your message has been sent!</p>";
             }
             else
