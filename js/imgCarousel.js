@@ -32,7 +32,7 @@ function Prev()
     num--;
     if(num < 0)
     {
-        num = imgArr,length-1;
+        num = imgArr.length-1;
     }
 
     crsl.src = imgArr[num];

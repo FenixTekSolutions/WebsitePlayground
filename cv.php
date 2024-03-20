@@ -38,6 +38,7 @@
                             <li>Javascript</li>
                             <li>SQL</li>
                             <li>PHP</li>
+                            <li>Python</li>
                         </ul>
                         </td>
                         <td>
